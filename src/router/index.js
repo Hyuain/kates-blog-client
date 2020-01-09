@@ -7,6 +7,7 @@ import User from '../pages/User'
 import Edit from '../pages/Edit'
 import Create from '../pages/Create'
 import My from '../pages/My'
+import Register from '../pages/Register'
 
 Vue.use(VueRouter)
 
@@ -39,7 +40,10 @@ const routes = [
     path: '/my',
     component: My
   },
-
+  {
+    path: '/register',
+    component: Register
+  }
 ]
 
 const router = new VueRouter({
