@@ -1,8 +1,6 @@
-import Vue from 'vue'
-import '../plugins/axios.js'
+import axios from "axios";
 import {Message} from "element-ui"
 
-const axios = Vue.asxios
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.baseURL = 'http://blog-server.hunger-valley.com'
