@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../pages/Index'
-import Login from '../pages/Login'
-import Detail from '../pages/Detail'
-import User from '../pages/User'
-import Edit from '../pages/Edit'
-import Create from '../pages/Create'
-import My from '../pages/My'
-import Register from '../pages/Register'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -15,37 +7,37 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: Index
+    component: () => import('../pages/Index.vue')
   },
   {
     path: '/login',
-    component: Login
+    component: () => import('../pages/Login.vue')
   },
   {
     path: '/register',
-    component: Register
+    component: () => import('../pages/Register.vue')
   },
   {
     path: '/detail/:blogId',
-    component: Detail
+    component: () => import('../pages/Detail.vue')
   },
   {
     path: '/user/:userId',
-    component: User
+    component: () => import('../pages/User.vue')
   },
   {
     path: '/edit/:blogId',
-    component: Edit,
+    component: () => import('../pages/Edit.vue'),
     meta: {requiresAuth: true}
   },
   {
     path: '/create',
-    component: Create,
+    component: () => import('../pages/Create.vue'),
     meta: {requiresAuth: true}
   },
   {
     path: '/my',
-    component: My,
+    component: () => import('../pages/My.vue'),
     meta: {requiresAuth: true}
   }
 ]
