@@ -1,25 +1,42 @@
 <template>
-  <header v-if="!isLogin" class="not-logged-in">
+  <header v-if="!loginStatus" class="not-logged-in">
     <h1>Kate's Garden</h1>
     <p>立子的后花园</p>
     <div class="buttons">
-      <el-button>注册账号</el-button>
-      <el-button>立即登录</el-button>
+      <router-link to="/register"><el-button>注册账号</el-button></router-link>
+      <router-link to="/login"><el-button>立即登录</el-button></router-link>
     </div>
   </header>
   <header v-else class="logged-in">
     <h1>Kate's Garden</h1>
     <i class="edit el-icon-edit"></i>
-    <img src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="" class="avatar">
+    <img :src="userInfo.avatar" :alt="userInfo.username" :title="userInfo.username" class="avatar">
+    <el-button @click="onLogout">注销</el-button>
+    <router-link to="/my"><el-button>我的</el-button></router-link>
   </header>
 </template>
 
 <script>
+  import user from '../api/user'
+
+  import {mapGetters, mapActions} from 'vuex'
+
+  window.user = user
+
   export default {
     name: "Header",
-    data() {
-      return {
-        isLogin: false
+    computed: {
+      ...mapGetters(['userInfo','loginStatus'])
+    },
+    created() {
+      this.checkLoginStatus()
+    },
+    methods: {
+      ...mapActions(['checkLoginStatus', 'logout']),
+      onLogout(){
+        this.logout().then(()=>{
+          this.$router.push('/')
+        })
       }
     }
   }

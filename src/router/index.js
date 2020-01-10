@@ -8,6 +8,7 @@ import Edit from '../pages/Edit'
 import Create from '../pages/Create'
 import My from '../pages/My'
 import Register from '../pages/Register'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -21,33 +22,54 @@ const routes = [
     component: Login
   },
   {
-    path: '/detail',
+    path: '/register',
+    component: Register
+  },
+  {
+    path: '/detail/:blogId',
     component: Detail
   },
   {
-    path: '/user',
+    path: '/user/:userId',
     component: User
   },
   {
-    path: '/edit',
-    component: Edit
+    path: '/edit/:blogId',
+    component: Edit,
+    meta: {requiresAuth: true}
   },
   {
     path: '/create',
-    component: Create
+    component: Create,
+    meta: {requiresAuth: true}
   },
   {
     path: '/my',
-    component: My
-  },
-  {
-    path: '/register',
-    component: Register
+    component: My,
+    meta: {requiresAuth: true}
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    store.dispatch('checkLoginStatus').then(loginStatus => {
+      if (!loginStatus) {
+        next({
+          path: '/login',
+          query: {redirect: to.fullPath}
+        })
+      } else {
+        next()
+      }
+    })
+  } else {
+    next() // 确保一定要调用 next()
+  }
+
 })
 
 export default router

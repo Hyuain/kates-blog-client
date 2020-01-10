@@ -23,11 +23,11 @@
 
 <script>
   import request from "../helpers/request"
-  import auth from "../api/auth"
+  import user from "../api/user"
   import blog from "../api/blog"
 
   window.request = request
-  window.auth = auth
+  window.user = user
   window.blog = blog
 
   export default {

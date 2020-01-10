@@ -1,28 +1,32 @@
 <template>
-  <div class="login">
-    登录页面
+  <div id="login">
+    <div><input type="username" v-model="username" placeholder="用户名"></div>
+    <div><input type="password" v-model="password" placeholder="密码" @keyup.enter="onLogin"></div>
+    <el-button @click="onLogin">立即登录</el-button>
   </div>
 </template>
 
 <script>
-export default {
+  import {mapActions} from 'vuex'
 
-}
+  export default {
+    data() {
+      return {
+        username: '',
+        password: ''
+      }
+    },
+    methods: {
+      ...mapActions(['login']),
+      onLogin() {
+        this.login({username: this.username, password: this.password})
+          .then(() => {
+            this.$router.push({path: this.$route.query.redirect || '/'})
+          })
+      }
+    }
+  }
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
