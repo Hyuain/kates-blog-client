@@ -1,28 +1,34 @@
 <template>
-  <div class="create">
-    创建博客
+  <div id="create">
+    <input type="text" v-model="title" placeholder="title"/>
+    <input type="textarea" v-model="description" placeholder="description"/>
+    <input type="textarea" v-model="content" placeholder="content"/>
+    <button @click="onCreate">Create</button>
   </div>
 </template>
 
 <script>
-export default {
+  import blog from '../api/blog.js'
 
+export default {
+  data(){
+    return {
+      title: '',
+      description: '',
+      content: ''
+    }
+  },
+  methods:{
+    onCreate(){
+      blog.createBlog({title: this.title, content: this.content, description: this.description})
+        .then(response => {
+          this.$message.success(response.msg)
+          this.$router.push({path:`/detail/${response.data.id}`})
+        })
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

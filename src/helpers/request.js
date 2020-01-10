@@ -12,7 +12,7 @@ export default function request(url, type = 'GET', data = {}) {
       url,
       method: type
     }
-    if (type.toLowerCase() === 'GET') {
+    if (type.toLowerCase() === 'get') {
       options.params = data
     } else {
       options.data = data

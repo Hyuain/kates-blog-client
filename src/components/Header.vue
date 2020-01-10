@@ -8,8 +8,8 @@
     </div>
   </header>
   <header v-else class="logged-in">
-    <h1>Kate's Garden</h1>
-    <i class="edit el-icon-edit"></i>
+    <h1><router-link to="/">Kate's Garden</router-link></h1>
+    <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
     <img :src="userInfo.avatar" :alt="userInfo.username" :title="userInfo.username" class="avatar">
     <el-button @click="onLogout">注销</el-button>
     <router-link to="/my"><el-button>我的</el-button></router-link>

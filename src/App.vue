@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss">
-  @import "./src/assets/common";
+  @import "assets/Reset";
   #app {
     display: flex;
     flex-direction: column;

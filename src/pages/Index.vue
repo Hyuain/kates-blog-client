@@ -1,41 +1,55 @@
 <template>
   <div id="index">
     <section class="blog-list">
-      <div class="blog-item">
+      <router-link class="blog-item" v-for="blog in blogs" :key="blog.id" :to="`/detail/${blog.id}`">
         <figure class="avatar">
-          <img src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="" class="avatar">
-          <figcaption>lizi</figcaption>
+          <img :src="blog.user.avatar" :alt="blog.user.username" class="avatar">
+          <figcaption>{{blog.user.username}}</figcaption>
         </figure>
-        <h3>哈哈哈开搞</h3> <span>3天前</span>
-        <p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。如果你想在深入学习 Vue 之前对它有更多了解，我们制作了一个视频，带您了解其核心概念和一个示例工程。如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看对比其它框架。</p>
-      </div>
-      <div class="blog-item">
-        <figure class="avatar">
-          <img src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="" class="avatar">
-          <figcaption>lizi</figcaption>
-        </figure>
-        <h3>哈哈哈开搞</h3> <span>3天前</span>
-        <p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。如果你想在深入学习 Vue 之前对它有更多了解，我们制作了一个视频，带您了解其核心概念和一个示例工程。如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看对比其它框架。</p>
-      </div>
+        <h3>{{blog.title}}</h3> <span>{{$friendlyDate(blog.createdAt)}}</span>
+        <p>{{blog.description}}</p>
+      </router-link>
+    </section>
+    <section class="">
+      <el-pagination
+          layout="prev, pager, next"
+          @current-change="onPageChange"
+          :total="total">
+      </el-pagination>
     </section>
   </div>
 </template>
 
 <script>
-  import request from "../helpers/request"
-  import user from "../api/user"
-  import blog from "../api/blog"
 
-  window.request = request
-  window.user = user
-  window.blog = blog
+  import blog from '../api/blog.js'
 
   export default {
-    methods: {
-      onClick() {
-        this.$message.error('错啦')
+    data(){
+      return{
+        blogs: [],
+        total: 0,
+        page: 1
       }
-    }
+    },
+    created() {
+      this.page = parseInt(this.$route.query.page) || 1
+      blog.getBlogs({page: this.page}).then(response=> {
+        this.blogs = response.data
+        this.total = response.total
+        this.page = response.page
+      })
+    },
+    methods: {
+      onPageChange(newPage) {
+        blog.getBlogs({page:newPage}).then(response=> {
+          this.blogs = response.data
+          this.total = response.total
+          this.page = response.page
+          this.$router.push({path: '/', query: {page: newPage}})
+        })
+      }
+    },
   }
 </script>
 
