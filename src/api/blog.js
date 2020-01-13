@@ -9,8 +9,8 @@ const URL = {
 }
 
 export default {
-  getBlogs({page = 1, userId} = {page: 1}) {
-    return request(URL.GET_LIST, 'GET', {page, userId})
+  getBlogs({page = 1, userId, atIndex} = {page: 1}) {
+    return request(URL.GET_LIST, 'GET', {page, userId, atIndex})
   },
   getDetail({blogId}) {
     return request(URL.GET_DETAIL.replace(':blogId', blogId))

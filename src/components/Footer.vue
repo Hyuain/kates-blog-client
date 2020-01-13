@@ -1,6 +1,7 @@
 <template>
   <footer>
-    <p>© Blogs 2020</p>
+    <p>Sharing Garden © 2020</p>
+    <p>Harvey Zhang</p>
   </footer>
 </template>
 
@@ -15,5 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    color: white;
   }
 </style>

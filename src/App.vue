@@ -26,16 +26,16 @@
   #app {
     display: flex;
     flex-direction: column;
+    background: #c1dfee;
     #header {
-      border: 1px solid red;
     }
     #main {
       flex-grow: 1;
-      border: 1px solid red;
+      background: #c1dfee;
     }
     #footer {
       min-height: 5em;
-      border: 1px solid red;
+      background: #c1dfee;
     }
   }
 </style>

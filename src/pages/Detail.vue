@@ -16,13 +16,15 @@
 <script>
   import blog from '../api/blog.js'
   import marked from 'marked'
+
   export default {
-    data(){
+    data() {
       return {
         title: '',
         rawContent: '',
         userInfo: {},
-        createdAt:''
+        createdAt: '',
+        blogId: 0
       }
     },
     computed: {
@@ -31,8 +33,8 @@
       }
     },
     created() {
-      const blogId = this.$route.params.blogId
-      blog.getDetail({blogId}).then(response => {
+      this.blogId = this.$route.params.blogId
+      blog.getDetail({blogId: this.blogId}).then(response => {
         this.title = response.data.title
         this.rawContent = response.data.content
         this.createdAt = response.data.createdAt
@@ -44,7 +46,7 @@
 
 <style scoped lang="scss">
   @import "../assets/article";
-  #detail{
+  #detail {
     margin: 20px;
     article.article {
       margin: 20px;
