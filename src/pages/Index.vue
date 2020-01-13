@@ -124,21 +124,21 @@
           flex-wrap: wrap;
           width: calc(100% - 5em);
           margin-left: 0.5em;
+          padding-top: 10px;
           h3 {
-            align-self: flex-end;
-            margin-bottom: 10px;
+            align-self: baseline;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             max-width: calc(100% - 4.5em);
           }
           span {
-            align-self: flex-end;
-            margin-bottom: 10px;
+            align-self: baseline;
             margin-left: .5em;
           }
           p {
             width: 100%;
+            word-break: break-all;
           }
         }
         }
