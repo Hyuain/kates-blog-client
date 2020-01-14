@@ -46,6 +46,11 @@ article.article {
     border: none;
     border-top: 1px solid #c2e0ef;
   }
+  img{
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
   pre, code{
     font-family: "Fira Code","Roboto Mono", Monaco, courier,Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, monospace;
     font-size: 0.85em;

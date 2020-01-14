@@ -22,6 +22,7 @@
 <script>
   import blog from '../api/blog.js'
   import marked from 'marked'
+  import DOMPurify from 'dompurify'
 
   export default {
     data() {
@@ -35,7 +36,7 @@
     },
     computed: {
       htmlContent() {
-        return marked(this.rawContent)
+        return DOMPurify.sanitize(marked(this.rawContent))
       }
     },
     created() {

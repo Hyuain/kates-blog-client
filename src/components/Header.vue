@@ -23,11 +23,11 @@
         <img :src="userInfo.avatar" :alt="userInfo.avatar">
       </div>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>
-          <router-link to="/my">
+        <router-link to="/my">
+          <el-dropdown-item>
             <span>我的</span>
-          </router-link>
-        </el-dropdown-item>
+          </el-dropdown-item>
+        </router-link>
         <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -127,12 +127,11 @@
         align-items: center;
         font-size: 2.5em;
         color: #fff;
-
         @media(max-width: 576px) {
           font-size: 2.2em;
         }
       }
-      .avatar-dropdown{
+      .avatar-dropdown {
         .avatar {
           width: 3.2em;
           height: 3.2em;
@@ -140,7 +139,7 @@
           border-radius: 50%;
           position: relative;
           border: 2px solid #fff;
-          &:hover{
+          &:hover {
             cursor: pointer;
           }
           img {
@@ -153,7 +152,6 @@
           }
         }
       }
-
     }
   }
 </style>

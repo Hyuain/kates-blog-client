@@ -206,6 +206,7 @@
           .options {
             margin-left: auto;
             margin-top: .5em;
+            margin-bottom: -1em;
             .edit {
               margin-right: 1em;
               color: #909399;
