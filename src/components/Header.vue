@@ -78,8 +78,6 @@
     }
   }
   #header {
-    display: flex;
-    align-items: center;
     background-image: url("../assets/images/bg-clouds.png");
     background-repeat: repeat-x;
     color: #fff;
@@ -88,9 +86,7 @@
     }
     &.not-logged-in {
       padding: 1em;
-      justify-content: center;
       text-align: center;
-      flex-direction: column;
       animation: fullBackgroundAnimation 40s linear infinite;
       h1 {
         margin-bottom: 10px;
@@ -110,25 +106,28 @@
       }
     }
     &.logged-in {
-      justify-content: flex-start;
       animation: halfBackgroundAnimation 40s linear infinite;
+      display: flex;
+      align-items: center;
       h1 {
         margin-left: .4em;
-        height: 3em;
-        line-height: 3em;
+        height: 100px;
+        line-height: 100px;
         @media(max-width: 567px) {
           font-size: 1.7em;
         }
       }
       .edit {
         margin-left: auto;
-        margin-right: .3em;
-        height: 3em;
-        line-height: 3em;
+        margin-right: .2em;
+        height: 100px;
+        line-height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 2.5em;
+        color: #fff;
+
         @media(max-width: 567px) {
           font-size: 2.2em;
         }
@@ -136,12 +135,12 @@
       .avatar-dropdown{
         margin-right: .4em;
         .avatar {
-          vertical-align: center;
-          width: 3em;
-          height: 3em;
+          width: 3.2em;
+          height: 3.2em;
           overflow: hidden;
           border-radius: 50%;
           position: relative;
+          border: 2px solid #fff;
           img {
             width: 110%;
             height: 110%;
