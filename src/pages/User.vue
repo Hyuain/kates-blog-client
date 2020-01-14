@@ -90,6 +90,7 @@
     box-shadow: 0 1px 4px #90c2db;
     .user-info {
       text-align: center;
+      margin-top: 1em;
       @media (max-width: 576px) {
         border-bottom: 1px solid rgba(201, 201, 201, 0.75);
         padding-bottom: 2em;
