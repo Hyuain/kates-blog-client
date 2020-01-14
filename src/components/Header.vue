@@ -141,6 +141,9 @@
           border-radius: 50%;
           position: relative;
           border: 2px solid #fff;
+          &:hover{
+            cursor: pointer;
+          }
           img {
             width: 110%;
             height: 110%;

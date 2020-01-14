@@ -63,12 +63,12 @@
 <style scoped lang="scss">
   #index {
     .blog-list {
-      margin: 2em 15%;
+      margin: 0 15%;
       @media(max-width: 567px) {
-        margin: 1em 1em;
+        margin: 0 20px;
       }
       .blog-item {
-        margin: 2em 0;
+        margin: 32px 0;
         border-radius: 10px;
         background: #fff;
         padding: 1em;
@@ -77,7 +77,7 @@
         overflow: hidden;
         transition: all .2s;
         @media(max-width: 567px) {
-          margin: 1em 0;
+          margin: 20px 0;
           padding: .8em;
         }
         &:hover{
