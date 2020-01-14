@@ -17,12 +17,20 @@
     <h1>
       <router-link to="/">Sharing Garden</router-link>
     </h1>
-    <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
-    <img :src="userInfo.avatar" :alt="userInfo.username" :title="userInfo.username" class="avatar">
-    <el-button @click="onLogout">注销</el-button>
-    <router-link to="/my">
-      <el-button>我的</el-button>
-    </router-link>
+    <router-link to="/create" class="edit"><i class="el-icon-plus"></i></router-link>
+    <el-dropdown class="avatar-dropdown">
+      <div class="avatar el-dropdown-link">
+        <img :src="userInfo.avatar" :alt="userInfo.avatar">
+      </div>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item>
+          <router-link to="/my">
+            <span>我的</span>
+          </router-link>
+        </el-dropdown-item>
+        <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
   </header>
 </template>
 
@@ -70,16 +78,16 @@
     }
   }
   #header {
-    padding: 1em;
     display: flex;
     align-items: center;
     background-image: url("../assets/images/bg-clouds.png");
     background-repeat: repeat-x;
     color: #fff;
-    a{
-      color:#fff;
+    a {
+      color: #fff;
     }
     &.not-logged-in {
+      padding: 1em;
       justify-content: center;
       text-align: center;
       flex-direction: column;
@@ -104,19 +112,47 @@
     &.logged-in {
       justify-content: flex-start;
       animation: halfBackgroundAnimation 40s linear infinite;
-      h1{
-        margin-top: .2em;
-        margin-left: .2em;
+      h1 {
+        margin-left: .4em;
+        height: 3em;
+        line-height: 3em;
         @media(max-width: 567px) {
-          font-size: 2em;
+          font-size: 1.7em;
         }
       }
-      i {
+      .edit {
         margin-left: auto;
+        margin-right: .3em;
+        height: 3em;
+        line-height: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5em;
+        @media(max-width: 567px) {
+          font-size: 2.2em;
+        }
       }
-      img {
-        width: 2em;
+      .avatar-dropdown{
+        margin-right: .4em;
+        .avatar {
+          vertical-align: center;
+          width: 3em;
+          height: 3em;
+          overflow: hidden;
+          border-radius: 50%;
+          position: relative;
+          img {
+            width: 110%;
+            height: 110%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+          }
+        }
       }
+
     }
   }
 </style>

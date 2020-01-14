@@ -3,7 +3,7 @@
     <section class="blog-list">
       <div class="blog-item" v-for="blog in blogs" :key="blog.id">
         <router-link :to="`/user/${blog.user.id}`" class="user-info">
-          <div class="img-wrapper">
+          <div class="avatar">
             <img :src="blog.user.avatar" :alt="blog.user.username">
           </div>
           <p>{{blog.user.username}}</p>
@@ -34,7 +34,8 @@
       return {
         blogs: [],
         total: 0,
-        page: 1
+        page: 1,
+        blog: {}
       }
     },
     created() {
@@ -43,6 +44,7 @@
         this.blogs = response.data
         this.total = response.total
         this.page = response.page
+        this.blog=this.blogs[0]
       })
     },
     methods: {
@@ -73,9 +75,14 @@
         box-shadow: 0 1px 4px #90c2db;
         display: flex;
         overflow: hidden;
+        transition: all .2s;
         @media(max-width: 567px) {
           margin: 1em 0;
           padding: .8em;
+        }
+        &:hover{
+          box-shadow: 0 3px 4px #90c2db;
+          transform: translateY(-2%);
         }
         .user-info {
           display: flex;
@@ -88,12 +95,12 @@
             width: 4em;
           }
           &:hover{
-            .img-wrapper{
+            .avatar{
               box-shadow: 0 2px 4px #333;
               transform: translateY(-2%);
             }
           }
-          .img-wrapper {
+          .avatar {
             width: 4em;
             height: 4em;
             overflow: hidden;
@@ -115,6 +122,7 @@
           }
           p {
             overflow: hidden;
+            white-space: nowrap;
             text-overflow: ellipsis;
             max-width: 100%;
           }
