@@ -1,53 +1,77 @@
-.article {
+article.article {
   h1 {
     margin: 0 0 1em;
   }
-
   h2 {
     margin: 45px 0 0.8em;
-    padding-bottom: 0.7em;
-    border-bottom: 1px solid #ddd;
   }
-
   h3 {
     margin: 52px 0 1.2em;
   }
-
   figure,
   p,
   ul,
   ol {
     margin: 1.2em 0;
   }
-
   p,
   ul,
   ol {
     line-height: 1.6em;
   }
-
   ul,
   ol {
     padding-left: 1.5em;
   }
-
   a {
-    color: #42b983;
+    color: #90c2db;
     font-weight: 600;
+    &:hover {
+      color: #c2e0ef;
+    }
   }
-
   blockquote {
     margin: 2em 0;
     padding-left: 20px;
-    border-left: 4px solid #42b983;
+    border-left: 4px solid #90c2db;
   }
-
   blockquote p {
     font-weight: 600;
     margin-left: 0;
   }
-
   iframe {
     margin: 1em 0;
   }
+  hr {
+    border: none;
+    border-top: 1px solid #c2e0ef;
+  }
+  pre, code{
+    font-family: "Fira Code","Roboto Mono", Monaco, courier,Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, monospace;
+    font-size: 0.85em;
+    background-color: #f8f8f8;
+    -webkit-font-smoothing: initial;
+    -moz-osx-font-smoothing: initial;
+  }
+  code {
+    color: #d63200;
+    padding: 3px 5px;
+    margin: 0 2px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  pre {
+    border-radius: 10px;
+    code{
+      border-radius: 10px;
+      overflow-x: auto;
+      color: #525252;
+      white-space: pre;
+      padding: 1.2em 1.4em;
+      font-size: 0.85rem;
+      line-height: 1.6rem;
+      display: block;
+    }
+  }
+
 }

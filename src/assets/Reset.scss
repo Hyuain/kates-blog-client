@@ -6,6 +6,9 @@
 html, body, #app {
   height: 100%;
 }
+/* Modify Article Style */
+@import "../assets/article";
+/* Modify Default Style */
 a {
   text-decoration: none;
   color: #303133;
@@ -28,10 +31,10 @@ a {
     font-size: 1.2em;
   }
 }
-
 .el-textarea {
-  textarea.el-textarea__inner{
+  textarea.el-textarea__inner {
     border-radius: 20px;
     font-size: 1.2em;
   }
 }
+

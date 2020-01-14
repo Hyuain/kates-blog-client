@@ -51,7 +51,6 @@
 </script>
 
 <style scoped lang="scss">
-  @import "../assets/article";
   #detail {
     margin: 0 15%;
     @media(max-width: 576px) {
