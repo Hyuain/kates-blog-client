@@ -75,13 +75,13 @@ export default {
 
 <style scoped lang="scss">
   #edit{
-    margin: 0 15%;
+    margin: 32px 15%;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0 1px 4px #90c2db;
     padding: 4em 0;
     @media(max-width: 576px) {
-      margin: 0 20px;
+      margin: 20px;
       padding: 2em 0;
 
     }

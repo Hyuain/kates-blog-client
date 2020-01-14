@@ -54,13 +54,13 @@
 
 <style scoped lang="scss">
   #detail {
-    margin: 0 15%;
+    margin: 32px 15%;
     border-radius: 10px;
     background: #fff;
     padding: 2.5em;
     @media (max-width: 576px) {
       padding: 1.5em 1em;
-      margin: 0;
+      margin: 20px 0;
       border-radius: 0;
     }
     box-shadow: 0 1px 4px #90c2db;

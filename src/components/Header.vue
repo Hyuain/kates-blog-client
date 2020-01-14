@@ -1,37 +1,39 @@
 <template>
-  <header v-if="!loginStatus" class="not-logged-in">
-    <router-link to="/">
-      <h1>Sharing Garden</h1>
-      <p>分享你的见解</p>
-    </router-link>
-    <div class="buttons">
-      <router-link to="/register" class="button">
-        <el-button round size="medium">注册账号</el-button>
+  <div id="header">
+    <header v-if="!loginStatus" class="not-logged-in">
+      <router-link to="/">
+        <h1>Sharing Garden</h1>
+        <p>分享你的见解</p>
       </router-link>
-      <router-link to="/login" class="button">
-        <el-button round size="medium">立即登录</el-button>
-      </router-link>
-    </div>
-  </header>
-  <header v-else class="logged-in">
-    <h1>
-      <router-link to="/">Sharing Garden</router-link>
-    </h1>
-    <router-link to="/create" class="edit"><i class="el-icon-plus"></i></router-link>
-    <el-dropdown class="avatar-dropdown">
-      <div class="avatar el-dropdown-link">
-        <img :src="userInfo.avatar" :alt="userInfo.avatar">
-      </div>
-      <el-dropdown-menu slot="dropdown">
-        <router-link to="/my">
-          <el-dropdown-item>
-            <span>我的</span>
-          </el-dropdown-item>
+      <div class="buttons">
+        <router-link to="/register" class="button">
+          <el-button round size="medium">注册账号</el-button>
         </router-link>
-        <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-  </header>
+        <router-link to="/login" class="button">
+          <el-button round size="medium">立即登录</el-button>
+        </router-link>
+      </div>
+    </header>
+    <header v-else class="logged-in">
+      <h1>
+        <router-link to="/">Sharing Garden</router-link>
+      </h1>
+      <router-link to="/create" class="edit"><i class="el-icon-plus"></i></router-link>
+      <el-dropdown class="avatar-dropdown">
+        <div class="avatar el-dropdown-link">
+          <img :src="userInfo.avatar" :alt="userInfo.avatar">
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <router-link to="/my">
+            <el-dropdown-item>
+              <span>我的</span>
+            </el-dropdown-item>
+          </router-link>
+          <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -66,7 +68,7 @@
       background-position: 0 0;
     }
     100% {
-      background-position: 100% 0;
+      background-position: 1000% 0;
     }
   }
   @keyframes halfBackgroundAnimation {
@@ -74,20 +76,24 @@
       background-position: 0 86%;
     }
     100% {
-      background-position: 100% 86%;
+      background-position: 1000% 86%;
     }
   }
   #header {
-    background-image: url("../assets/images/bg-clouds.png");
-    background-repeat: repeat-x;
-    color: #fff;
-    a {
+    header{
+      background-image: url("../assets/images/bg-clouds.png");
+      background-repeat: repeat-x;
+      background-position: 0 0;
       color: #fff;
+      a {
+        color: #fff;
+      }
     }
-    &.not-logged-in {
+    .not-logged-in {
+
       padding: 1em;
       text-align: center;
-      animation: fullBackgroundAnimation 40s linear infinite;
+      animation: fullBackgroundAnimation 400s linear infinite;
       h1 {
         margin-bottom: 10px;
         font-size: 3em;
@@ -105,14 +111,15 @@
         }
       }
     }
-    &.logged-in {
-      animation: halfBackgroundAnimation 40s linear infinite;
+    .logged-in {
+      animation: halfBackgroundAnimation 400s linear infinite;
       display: flex;
       align-items: center;
       padding: 0 2em;
       h1 {
         height: 100px;
         line-height: 100px;
+        display: inline-block;
         @media(max-width: 576px) {
           font-size: 1.7em;
         }

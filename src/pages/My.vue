@@ -93,14 +93,14 @@
 
 <style scoped lang="scss">
   #my {
-    margin: 0 15%;
-    @media(max-width: 576px) {
-      margin: 0 20px;
-    }
+    margin: 32px 15%;
     border-radius: 10px;
     background: #fff;
     padding: 1em;
     box-shadow: 0 1px 4px #90c2db;
+    @media(max-width: 576px) {
+      margin: 20px;
+    }
     .user-info {
       text-align: center;
       margin-top: 1em;
