@@ -91,7 +91,7 @@
       h1 {
         margin-bottom: 10px;
         font-size: 3em;
-        @media(max-width: 567px) {
+        @media(max-width: 576px) {
           font-size: 2.2em;
         }
       }
@@ -109,11 +109,11 @@
       animation: halfBackgroundAnimation 40s linear infinite;
       display: flex;
       align-items: center;
+      padding: 0 2em;
       h1 {
-        margin-left: .4em;
         height: 100px;
         line-height: 100px;
-        @media(max-width: 567px) {
+        @media(max-width: 576px) {
           font-size: 1.7em;
         }
       }
@@ -128,12 +128,11 @@
         font-size: 2.5em;
         color: #fff;
 
-        @media(max-width: 567px) {
+        @media(max-width: 576px) {
           font-size: 2.2em;
         }
       }
       .avatar-dropdown{
-        margin-right: .4em;
         .avatar {
           width: 3.2em;
           height: 3.2em;

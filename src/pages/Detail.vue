@@ -54,7 +54,7 @@
   @import "../assets/article";
   #detail {
     margin: 0 15%;
-    @media(max-width: 567px) {
+    @media(max-width: 576px) {
       margin: 0 20px;
     }
     border-radius: 10px;
@@ -87,7 +87,7 @@
           border-radius: 50%;
           position: relative;
           transition: all .2s;
-          @media(max-width: 567px) {
+          @media(max-width: 576px) {
             width: 3.5em;
             height: 3.5em;
           }

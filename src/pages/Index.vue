@@ -64,7 +64,7 @@
   #index {
     .blog-list {
       margin: 0 15%;
-      @media(max-width: 567px) {
+      @media(max-width: 576px) {
         margin: 0 20px;
       }
       .blog-item {
@@ -76,7 +76,7 @@
         display: flex;
         overflow: hidden;
         transition: all .2s;
-        @media(max-width: 567px) {
+        @media(max-width: 576px) {
           margin: 20px 0;
           padding: .8em;
         }
@@ -91,7 +91,7 @@
           align-items: center;
           width: 5em;
           flex-shrink: 0;
-          @media(max-width: 567px) {
+          @media(max-width: 576px) {
             width: 4em;
           }
           &:hover{
@@ -107,7 +107,7 @@
             border-radius: 50%;
             position: relative;
             transition: all .2s;
-            @media(max-width: 567px) {
+            @media(max-width: 576px) {
               width: 3.5em;
               height: 3.5em;
             }
