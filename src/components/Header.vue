@@ -1,55 +1,62 @@
 <template>
   <div id="header">
-    <header v-if="!loginStatus" class="not-logged-in">
-      <router-link to="/">
-        <h1>Sharing Garden</h1>
-        <p>分享你的见解</p>
-      </router-link>
-      <div class="buttons">
-        <router-link to="/register" class="button">
-          <el-button round size="medium">注册账号</el-button>
+    <div v-if="!isLoading">
+      <header v-if="!loginStatus" class="not-logged-in">
+        <router-link to="/">
+          <h1>Sharing Garden</h1>
+          <p>分享你的见解</p>
         </router-link>
-        <router-link to="/login" class="button">
-          <el-button round size="medium">立即登录</el-button>
-        </router-link>
-      </div>
-    </header>
-    <header v-else class="logged-in">
-      <h1>
-        <router-link to="/">Sharing Garden</router-link>
-      </h1>
-      <router-link to="/create" class="edit"><i class="el-icon-plus"></i></router-link>
-      <el-dropdown class="avatar-dropdown">
-        <div class="avatar el-dropdown-link">
-          <img :src="userInfo.avatar" :alt="userInfo.avatar">
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/my">
-            <el-dropdown-item>
-              <span>我的</span>
-            </el-dropdown-item>
+        <div class="buttons">
+          <router-link to="/register" class="button">
+            <el-button round size="medium">注册账号</el-button>
           </router-link>
-          <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </header>
+          <router-link to="/login" class="button">
+            <el-button round size="medium">立即登录</el-button>
+          </router-link>
+        </div>
+      </header>
+      <header v-else class="logged-in">
+        <h1>
+          <router-link to="/">Sharing Garden</router-link>
+        </h1>
+        <router-link to="/create" class="edit"><i class="el-icon-plus"></i></router-link>
+        <el-dropdown class="avatar-dropdown">
+          <div class="avatar el-dropdown-link">
+            <img :src="userInfo.avatar" :alt="userInfo.avatar">
+          </div>
+          <el-dropdown-menu slot="dropdown">
+            <router-link to="/my">
+              <el-dropdown-item>
+                <span>我的</span>
+              </el-dropdown-item>
+            </router-link>
+            <el-dropdown-item @click.native="onLogout">注销</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </header>
+    </div>
+    <div v-else>
+
+    </div>
   </div>
 </template>
 
 <script>
-  import user from '../api/user'
-
   import {mapGetters, mapActions} from 'vuex'
-
-  window.user = user
 
   export default {
     name: "Header",
+    data() {
+      return {
+        isLoading: true
+      }
+    },
     computed: {
       ...mapGetters(['userInfo', 'loginStatus'])
     },
-    created() {
-      this.checkLoginStatus()
+    async created() {
+      await this.checkLoginStatus()
+      this.isLoading = false
     },
     methods: {
       ...mapActions(['checkLoginStatus', 'logout']),
@@ -80,7 +87,7 @@
     }
   }
   #header {
-    header{
+    header {
       background-image: url("../assets/images/bg-clouds.png");
       background-repeat: repeat-x;
       background-position: 0 0;
@@ -90,7 +97,6 @@
       }
     }
     .not-logged-in {
-
       padding: 1em;
       text-align: center;
       animation: fullBackgroundAnimation 400s linear infinite;
