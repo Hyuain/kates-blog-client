@@ -18,7 +18,6 @@
         </router-link>
       </div>
     </section>
-
     <section class="pagination">
       <el-pagination
           layout="prev, pager, next"
